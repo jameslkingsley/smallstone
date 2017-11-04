@@ -1,0 +1,33 @@
+.btn {
+    @apply .bg-white .rounded .shadow .cursor-pointer .text-sm .font-medium .no-underline .align-middle .whitespace-no-wrap;
+    transition: all .15s ease;
+    padding: 10px 15px 10px;
+    text-align: left;
+
+    &:hover {
+        @apply .bg-white;
+    }
+
+    &:active {
+        @apply .bg-white;
+    }
+
+    &.btn-hero {
+        @apply .bg-transparent .border-3 .font-semibold .text-lg .text-white .rounded-none;
+        padding: 15px 20px 15px;
+        border-color: currentColor;
+
+        &:hover, &:active {
+            padding: 15px 30px 15px;
+            // transform: scale(1.066);
+        }
+    }
+
+    &.btn-primary {
+        @apply .bg-brand .text-white;
+
+        &:active {
+            @apply .bg-brand-dark;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@tailwind preflight;
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
+
+@import "button";
+
+.box {
+    .box-icon {
+        @apply .text-6xl;
+    }
+
+    .box-title {
+        @apply .pt-2 .pb-6 .text-3xl;
+    }
+
+    .box-text {
+        @apply .text-sm .text-grey-lightest .leading-normal .px-6;
+    }
+}
+
+.bg-image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@tailwind utilities;
+
+* { outline: 0 !important; }

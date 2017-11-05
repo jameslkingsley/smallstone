@@ -8,7 +8,7 @@
             <div v-show="notSent">
                 <h1 class="text-center mb-4">Just a few questions</h1>
                 <p class="text-center leading-normal mb-12">
-                    After you introduce yourself and your project, I'll get in touch with you to schedule a time to discuss your project. You should expect to hear from me in a day or so.
+                    After you submit your details I'll get in touch with you to schedule a time to discuss your project. You should expect to hear from me within a few days.
                 </p>
 
                 <div class="flex flex-wrap mb-2">
@@ -49,7 +49,7 @@
             <div v-show="!notSent">
                 <h1 class="text-center mb-4">Enquiry sent!</h1>
                 <p class="text-center leading-normal mb-12">
-                    You should expect to hear from me in a day or so.
+                    You should expect to hear from me within a few days.
                 </p>
             </div>
         </div>

@@ -129,8 +129,7 @@
     <section class="relative pt-32 pb-32 px-4 bg-brand text-center text-white">
         <div class="container mx-auto">
             <h1 class="mb-8 text-3xl">Let's Work Together</h1>
-            <p class="text-xl leading-normal">I'm accepting new projects and would love to hear about yours.</p>
-            <p class="text-xl leading-normal">Please take a few minutes to tell me about it.</p>
+            <p class="text-xl leading-normal">If you're interested in working together,<br />please take a few minutes to tell me about your project.</p>
             <p class="mt-8 leading-normal">
                 <button class="btn btn-hero" @click.prevent="getStarted">Get Started</button>
             </p>

@@ -57,7 +57,7 @@ var colors = {
   'brand': '#663399',
   'brand-light': '#f95b79',
   'brand-lighter': '#f95b79',
-  'brand-lightest': '#f95b79',
+  'brand-lightest': '#ac998b',
 
   'black': '#000',
   'grey-darkest': '#222',

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <contact-form></contact-form>
-
     <section class="w-full relative h-screen bg-image text-white" style="background-image: url({{ url('/images/banner.jpg') }})">
         <div class="container h-full mx-auto flex flex-col items-center content-center justify-center self-center">
             <p class="text-center pin-t absolute mt-12">
@@ -31,19 +29,19 @@
     <section id="more" class="container mx-auto pt-32 pb-32 px-4 flex flex-col items-center content-center justify-center self-center">
         <div class="flex flex-wrap w-full">
             <div class="box text-center md:w-1/3">
-                <i class="box-icon text-brand material-icons">lightbulb_outline</i>
+                <i class="box-icon text-brand-lightest material-icons">lightbulb_outline</i>
                 <h3 class="box-title">Consultancy</h3>
                 <p class="box-text">Just need advice on the technicals of your project?<br />I can set you up with all the information you need to better understand your project's requirements; from the front-end design to the back-end server.</p>
             </div>
 
             <div class="box text-center md:w-1/3">
-                <i class="box-icon text-brand material-icons">desktop_windows</i>
+                <i class="box-icon text-brand-lightest material-icons">desktop_windows</i>
                 <h3 class="box-title">Design</h3>
                 <p class="box-text">Need a re-design of your website? I can help transform it into a modern, clean and intuitive site.<br />I can provide a robust and configurable design that we can fine-tune to fit your brand.</p>
             </div>
 
             <div class="box text-center md:w-1/3">
-                <i class="box-icon text-brand material-icons">code</i>
+                <i class="box-icon text-brand-lightest material-icons">code</i>
                 <h3 class="box-title">Code</h3>
                 <p class="box-text">I love finding elegant solutions to complex problems. I have experience in many areas, such as accountancy, media, forums, online payments, social media and lots more. No matter the scope of your project, I'm sure I can help.</p>
             </div>
@@ -139,4 +137,6 @@
             <small>&copy; Small Stone {{ date('Y') }}</small>
         </p>
     </section>
+
+    <contact-form></contact-form>
 @endsection

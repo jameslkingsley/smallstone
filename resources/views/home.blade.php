@@ -21,7 +21,7 @@
 
             <p class="text-center pin-b absolute mb-12">
                 <a href="#more" class="text-white">
-                    <span class="inline-block w-full mb-2">Learn more about what I do</span>
+                    <span class="inline-block w-full mb-2">Learn more about me</span>
                     <i class="inline-block material-icons">keyboard_arrow_down</i>
                 </a>
             </p>

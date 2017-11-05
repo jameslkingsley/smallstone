@@ -1,7 +1,5 @@
-<h3>{{ $data->name }}</h3>
+<h2>{{ $data->name }}</h2>
 
-<p>
-    <small>{{ $data->email }} &middot; {{ $data->phone ?: 'No phone number' }} &middot; {{ $data->website ?: 'No website' }}</small>
-</p>
+<h4>{{ $data->email }} &middot; {{ $data->phone ?: 'No phone number' }} &middot; {{ $data->website ?: 'No website' }}</h4>
 
-<p>{{ $data->body }}</p>
+<p>{!! nl2br($data->body) !!}</p>

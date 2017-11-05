@@ -19,7 +19,6 @@
 
         &:hover, &:active {
             padding: 15px 30px 15px;
-            // transform: scale(1.066);
         }
     }
 
@@ -29,5 +28,9 @@
         &:active {
             @apply .bg-brand-dark;
         }
+    }
+
+    &.btn-loading {
+        opacity: 0.25;
     }
 }

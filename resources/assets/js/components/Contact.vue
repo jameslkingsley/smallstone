@@ -13,33 +13,38 @@
 
                 <div class="flex flex-wrap mb-2">
                     <div class="flex-1 m-2 w-1/2">
-                        <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.name" name="name" placeholder="Name *">
+                        <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" required v-model="form.name" name="name" placeholder="Name *">
+                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('name') }}</p>
                     </div>
 
                     <div class="flex-1 m-2 w-1/2">
-                        <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.email" type="email" name="email" placeholder="Email address *">
+                        <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" required v-model="form.email" type="email" name="email" placeholder="Email address *">
+                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('email') }}</p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap mb-2">
                     <div class="flex-1 m-2 w-1/2">
                         <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.phone" name="phone" placeholder="Phone number">
+                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('phone') }}</p>
                     </div>
 
                     <div class="flex-1 m-2 w-1/2">
                         <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.website" name="website" placeholder="Website">
+                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('website') }}</p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap">
                     <div class="flex-1 m-2 w-full">
-                        <textarea class="resize-none bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.body" rows="10" placeholder="Tell me about your project *"></textarea>
+                        <textarea class="resize-none leading-normal bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" required v-model="form.body" rows="7" placeholder="Tell me about your project *"></textarea>
+                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('body') }}</p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap">
                     <div class="flex-1 m-2 w-full">
-                        <button @click.prevent="submit" class="btn btn-hero float-right">
+                        <button @click.prevent="submit" :class="submitClasses" :disabled="form.processing">
                             Submit
                         </button>
                     </div>
@@ -57,19 +62,32 @@
 </template>
 
 <script>
+    import Form from 'form-backend-validation';
+
     export default {
         data() {
             return {
                 show: false,
                 notSent: true,
-                form: {
+                form: new Form({
                     name: '',
+                    body: '',
                     email: '',
                     phone: '',
                     website: '',
-                    body: ''
-                }
+                })
             };
+        },
+
+        computed: {
+            submitClasses() {
+                return {
+                    'btn': true,
+                    'btn-hero': true,
+                    'float-right': true,
+                    'btn-loading': this.form.processing,
+                };
+            }
         },
 
         methods: {
@@ -78,13 +96,18 @@
             },
 
             submit() {
-                axios.post('/contact', this.form)
-                    .then(r => this.notSent = false);
+                this.form.post('/contact')
+                    .then(r => this.notSent = false)
+                    .catch(e => console.log(this.form.errors.all()));
             }
         },
 
-        created() {
-            EventBus.listen('contact', e => this.show = true);
+        mounted() {
+            EventBus.listen('contact', e => {
+                this.form.reset();
+                this.notSent = true;
+                this.show = true;
+            });
         }
     }
 </script>

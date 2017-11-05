@@ -24,6 +24,14 @@
     background-repeat: no-repeat;
 }
 
+input, textarea {
+    padding: 1rem !important;
+
+    &:focus {
+        border-color: config('colors.white');
+    }
+}
+
 @tailwind utilities;
 
 * { outline: 0 !important; }

@@ -971,58 +971,71 @@ module.exports = __webpack_require__(40);
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 __webpack_require__(11);
 
 window.Vue = __webpack_require__(33);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.EventBus = new (function () {
+    function _class() {
+        _classCallCheck(this, _class);
 
-Vue.component('example-component', __webpack_require__(36));
+        this.vue = new Vue();
+    }
+
+    _createClass(_class, [{
+        key: 'fire',
+        value: function fire(event) {
+            var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+            this.vue.$emit(event, data);
+        }
+    }, {
+        key: 'listen',
+        value: function listen(event, callback) {
+            this.vue.$on(event, callback);
+        }
+    }, {
+        key: 'listenOnce',
+        value: function listenOnce(event, callback) {
+            this.vue.$once(event, callback);
+        }
+    }]);
+
+    return _class;
+}())();
+
+Vue.component('contact-form', __webpack_require__(36));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app',
+
+    methods: {
+        getStarted: function getStarted() {
+            // alert('Get Started!');
+            EventBus.fire('contact');
+        }
+    }
 });
 
 /***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 window._ = __webpack_require__(12);
 
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
 window.axios = __webpack_require__(14);
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-/**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
- */
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -29951,7 +29964,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\ExampleComponent.vue"
+Component.options.__file = "resources\\assets\\js\\components\\Contact.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -29961,9 +29974,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0ca92eac", Component.options)
+    hotAPI.createRecord("data-v-1ac7daf9", Component.options)
   } else {
-    hotAPI.reload("data-v-0ca92eac", Component.options)
+    hotAPI.reload("data-v-1ac7daf9", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -30104,10 +30117,84 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    data: function data() {
+        return {
+            show: false,
+            notSent: true,
+            form: {
+                name: '',
+                email: '',
+                phone: '',
+                website: '',
+                body: ''
+            }
+        };
+    },
+
+
+    methods: {
+        close: function close() {
+            this.show = false;
+        },
+        submit: function submit() {
+            var _this = this;
+
+            axios.post('/contact', this.form).then(function (r) {
+                return _this.notSent = false;
+            });
+        }
+    },
+
+    created: function created() {
+        var _this2 = this;
+
+        EventBus.listen('contact', function (e) {
+            return _this2.show = true;
+        });
     }
 });
 
@@ -30119,38 +30206,256 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      directives: [
+        { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
+      ],
+      staticClass: "fixed z-50 pin bg-brand"
+    },
+    [
+      _c(
+        "button",
+        {
+          staticClass: "absolute pin-t pin-r mt-8 mr-8 text-white text-5xl",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.close($event)
+            }
+          }
+        },
+        [_c("i", { staticClass: "material-icons text-5xl" }, [_vm._v("close")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "container w-1/3 py-24 mx-auto align-middle text-white"
+        },
+        [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.notSent,
+                  expression: "notSent"
+                }
+              ]
+            },
+            [
+              _c("h1", { staticClass: "text-center mb-4" }, [
+                _vm._v("Just a few questions")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-center leading-normal mb-12" }, [
+                _vm._v(
+                  "\n                After you introduce yourself and your project, I'll get in touch with you to schedule a time to discuss your project. You should expect to hear from me in a day or so.\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex flex-wrap mb-2" }, [
+                _c("div", { staticClass: "flex-1 m-2 w-1/2" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.name,
+                        expression: "form.name"
+                      }
+                    ],
+                    staticClass:
+                      "bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white",
+                    attrs: { name: "name", placeholder: "Name *" },
+                    domProps: { value: _vm.form.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex-1 m-2 w-1/2" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.email,
+                        expression: "form.email"
+                      }
+                    ],
+                    staticClass:
+                      "bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white",
+                    attrs: {
+                      type: "email",
+                      name: "email",
+                      placeholder: "Email address *"
+                    },
+                    domProps: { value: _vm.form.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "email", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex flex-wrap mb-2" }, [
+                _c("div", { staticClass: "flex-1 m-2 w-1/2" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.phone,
+                        expression: "form.phone"
+                      }
+                    ],
+                    staticClass:
+                      "bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white",
+                    attrs: { name: "phone", placeholder: "Phone number" },
+                    domProps: { value: _vm.form.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "phone", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex-1 m-2 w-1/2" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.website,
+                        expression: "form.website"
+                      }
+                    ],
+                    staticClass:
+                      "bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white",
+                    attrs: { name: "website", placeholder: "Website" },
+                    domProps: { value: _vm.form.website },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "website", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex flex-wrap" }, [
+                _c("div", { staticClass: "flex-1 m-2 w-full" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.body,
+                        expression: "form.body"
+                      }
+                    ],
+                    staticClass:
+                      "resize-none bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white",
+                    attrs: {
+                      rows: "10",
+                      placeholder: "Tell me about your project *"
+                    },
+                    domProps: { value: _vm.form.body },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "body", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex flex-wrap" }, [
+                _c("div", { staticClass: "flex-1 m-2 w-full" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-hero float-right",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.submit($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Submit\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.notSent,
+                  expression: "!notSent"
+                }
+              ]
+            },
+            [
+              _c("h1", { staticClass: "text-center mb-4" }, [
+                _vm._v("Enquiry sent!")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-center leading-normal mb-12" }, [
+                _vm._v(
+                  "\n                You should expect to hear from me in a day or so.\n            "
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0ca92eac", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1ac7daf9", module.exports)
   }
 }
 

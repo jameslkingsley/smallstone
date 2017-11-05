@@ -12,3 +12,4 @@
 */
 
 Route::view('/', 'home');
+Route::post('/contact', 'ContactController@store');

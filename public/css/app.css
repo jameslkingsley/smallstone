@@ -551,6 +551,16 @@ button,
   background-repeat: no-repeat;
 }
 
+input,
+textarea {
+  padding: 1rem !important;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #fff;
+}
+
 .container {
   width: 100%;
 }

@@ -130,8 +130,6 @@
                 <h3 class="box-title">Laravel Mentions</h3>
                 <p class="box-text">
                     Provides an easy way to setup mentions for Eloquent models. It provides the front-end for inserting mentions into content-editable elements, the back-end for associating mentions with models and lastly an elegant way to notify the mentioned models that they have been mentioned.
-                    <br /><br />
-                    <a href="https://github.com/jameslkingsley/laravel-mentions" target="_newtab">View on GitHub</a>
                 </p>
             </div>
 
@@ -139,8 +137,6 @@
                 <h3 class="box-title">Laravel References</h3>
                 <p class="box-text">
                     Provides a quick and simple way to add unique references to models that can be resolved via route model binding. You usually don't want to expose your primary keys to the client, and without a unique reference such as a username or slug, you can't quickly build a RESTful API.
-                    <br /><br />
-                    <a href="https://github.com/jameslkingsley/laravel-references" target="_newtab">View on GitHub</a>
                 </p>
             </div>
         </div>

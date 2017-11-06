@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109225028-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-109225028-1');
+        </script>
+
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,15 +23,6 @@
         <link rel="icon" type="image/png" href="{{ url('/favicon.png') }}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109225028-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'UA-109225028-1');
-        </script>
     </head>
 
     <body class="bg-white text-grey font-sans font-normal">

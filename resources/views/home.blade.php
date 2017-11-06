@@ -91,7 +91,7 @@
 
                 <div class="lg:w-1/2 md:w-full md:mb-8 text-left lg:pl-12">
                     <h2 class="mb-2">ARCOMM</h2>
-                    <p class="xl:w-2/3 lg:w-full leading-normal text-grey-lightest">
+                    <p class="xl:w-3/4 lg:w-full leading-normal text-grey-lightest">
                         Built using Laravel, this website handles their gaming community's management and provides a clean and modern hub for their memberbase.
                         <h3 class="text-base mt-4 text-grey-lighter font-medium">Notable Features</h3>
                         <ul class="inline-block xl:w-2/3 lg:w-full px-4 text-grey-lightest">

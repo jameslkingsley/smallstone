@@ -14,31 +14,31 @@
                 <div class="flex flex-wrap mb-2">
                     <div class="flex-1 m-2 w-1/2">
                         <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" required v-model="form.name" name="name" placeholder="Name *">
-                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('name') }}</p>
+                        <p class="pt-2 text-xs text-error">{{ form.getError('name') }}</p>
                     </div>
 
                     <div class="flex-1 m-2 w-1/2">
                         <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" required v-model="form.email" type="email" name="email" placeholder="Email address *">
-                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('email') }}</p>
+                        <p class="pt-2 text-xs text-error">{{ form.getError('email') }}</p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap mb-2">
                     <div class="flex-1 m-2 w-1/2">
                         <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.phone" name="phone" placeholder="Phone number">
-                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('phone') }}</p>
+                        <p class="pt-2 text-xs text-error">{{ form.getError('phone') }}</p>
                     </div>
 
                     <div class="flex-1 m-2 w-1/2">
                         <input class="bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" v-model="form.website" name="website" placeholder="Website">
-                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('website') }}</p>
+                        <p class="pt-2 text-xs text-error">{{ form.getError('website') }}</p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap">
                     <div class="flex-1 m-2 w-full">
                         <textarea class="resize-none leading-normal bg-transparent appearance-none border-3 border-transparent-1/2 w-full py-2 px-3 text-white" required v-model="form.body" rows="7" placeholder="Tell me about your project *"></textarea>
-                        <p class="pt-2 text-xs text-orange-light">{{ form.getError('body') }}</p>
+                        <p class="pt-2 text-xs text-error">{{ form.getError('body') }}</p>
                     </div>
                 </div>
 

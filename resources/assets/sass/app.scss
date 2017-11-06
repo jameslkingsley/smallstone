@@ -6,7 +6,7 @@
 
 .box {
     .box-icon {
-        @apply .text-6xl;
+        @apply .text-6xl .text-brand;
     }
 
     .box-title {
@@ -24,12 +24,20 @@
     background-repeat: no-repeat;
 }
 
+.flip-x {
+    transform: rotateY(180deg);
+}
+
 input, textarea {
     padding: 1rem !important;
 
     &:focus {
         border-color: config('colors.white');
     }
+}
+
+a {
+    @apply .text-brand;
 }
 
 @tailwind utilities;

@@ -30,19 +30,19 @@
         <div class="flex flex-wrap w-full">
             <div class="box text-center md:w-1/3">
                 <i class="box-icon text-brand-lightest material-icons">lightbulb_outline</i>
-                <h3 class="box-title">Consultancy</h3>
+                <h2 class="box-title">Consultancy</h2>
                 <p class="box-text">Just need advice on the technicals of your project?<br />I can set you up with all the information you need to better understand your project's requirements; from the front-end design to the back-end server.</p>
             </div>
 
             <div class="box text-center md:w-1/3">
                 <i class="box-icon text-brand-lightest material-icons">desktop_windows</i>
-                <h3 class="box-title">Design</h3>
+                <h2 class="box-title">Design</h2>
                 <p class="box-text">Need a re-design of your website? I can help transform it into a modern, clean and intuitive site.<br />I can provide a robust and configurable design that we can fine-tune to fit your brand.</p>
             </div>
 
             <div class="box text-center md:w-1/3">
                 <i class="box-icon text-brand-lightest material-icons">code</i>
-                <h3 class="box-title">Code</h3>
+                <h2 class="box-title">Code</h2>
                 <p class="box-text">I love finding elegant solutions to complex problems. I have experience in many areas, such as accountancy, media, forums, online payments, social media and lots more. No matter the scope of your project, I'm sure I can help.</p>
             </div>
         </div>
@@ -66,13 +66,13 @@
                 </div>
 
                 <div class="md:w-1/2 text-right">
-                    <img src="{{ url('/images/work/epos.png') }}">
+                    <img alt="EPOS" src="{{ url('/images/work/epos.png') }}">
                 </div>
             </div>
 
             <div class="flex flex-wrap mt-32">
                 <div class="md:w-1/2 text-left">
-                    <img src="{{ url('/images/work/arcomm.png') }}">
+                    <img alt="ARCOMM" src="{{ url('/images/work/arcomm.png') }}">
                 </div>
 
                 <div class="md:w-1/2 text-left pl-12">
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="md:w-1/2 text-right">
-                    <img src="{{ url('/images/work/mars.png') }}">
+                    <img alt="MARS" src="{{ url('/images/work/mars.png') }}">
                 </div>
             </div>
         </div>

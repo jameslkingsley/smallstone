@@ -124,6 +124,28 @@
                     <img alt="MARS" src="{{ url('/images/work/mars.png') }}">
                 </div>
             </div>
+
+            <div class="flex flex-wrap mt-12 md:mt-32">
+                <div class="lg:w-1/2 md:w-full hidden lg:block text-left">
+                    <img alt="ARCOMM" src="{{ url('/images/work/finance.png') }}">
+                </div>
+
+                <div class="lg:w-1/2 md:w-full md:mb-8 text-left lg:pl-12">
+                    <h2 class="mb-2">Finance</h2>
+                    <p class="xl:w-3/4 lg:w-full leading-normal text-grey-lightest">
+                        Simple finance app built using Laravel and Vue. Tracks savings, goals, purchases, expenses and wages.
+                        <h3 class="text-base mt-4 text-grey-lighter font-medium">Notable Features</h3>
+                        <ul class="inline-block xl:w-2/3 lg:w-full px-4 text-grey-lightest">
+                            <li class="p-1 leading-normal">Support for standalone app on mobiles.</li>
+                            <li class="p-1 leading-normal">Minimalist design built using Tailwind CSS.</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="lg:w-1/2 md:w-full lg:hidden block text-left">
+                    <img alt="Finance" src="{{ url('/images/work/finance.png') }}">
+                </div>
+            </div>
         </div>
     </section>
 

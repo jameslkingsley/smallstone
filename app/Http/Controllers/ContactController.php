@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes = (object) $request->validate([
+        $attributes = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'present',
@@ -24,7 +24,9 @@ class ContactController extends Controller
             'body' => 'required',
         ]);
 
-        Mail::to($attributes->email)->send(new Contact($attributes));
+        Mail::to($request->email)->send(
+            new Contact($attributes)
+        );
 
         return response('', 204);
     }
